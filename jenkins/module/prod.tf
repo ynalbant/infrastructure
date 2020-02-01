@@ -50,6 +50,6 @@ resource "aws_instance" "prod1"            {
   }
 
   tags = {
-    Name = "prod_jenkins"    
+    Name = "prod1"    
   }
 }
