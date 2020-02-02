@@ -39,6 +39,7 @@ resource "null_resource" "jenkins_passwd" {
         "sudo cp -r /tmp/config  /var/lib/jenkins/.ssh/",
         "sudo chmod 600 /var/lib/jenkins/.ssh/id_rsa",
         "sudo chown -R jenkins:jenkins /var/lib/jenkins/.ssh",    
+        
 
     ]
   }

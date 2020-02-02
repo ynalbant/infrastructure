@@ -38,6 +38,7 @@ resource "aws_instance" "jenkins_worker3" {
       "sudo usermod -aG docker  -s /bin/bash jenkins",
       "sudo cp -r /etc/skel/.*	/var/lib/jenkins",
       "sudo usermod -aG docker jenkins",
+      "sudo usermod -aG docker centos",
       "sudo chmod 777 /var/run/docker.sock",
       "# Installs packer",
       "sudo yum install wget unzip -y",
