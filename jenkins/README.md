@@ -83,3 +83,10 @@ ssh-keygen      #Enter 4 times
 #### When you see above error it means AWS is taking some time to update Route53 entry. It is safe to rerun apply command. Also verify if you put the proper domain in tfvars file
 
 ---
+
+### Error 5
+### This error below means that you are using new version of jenkins. New version of jenkins sometimes have a bug in it. As of now 01/2020 version 2.190 is good. 
+### It can be fixed with 
+###     yum remove  jenkins-2.*
+###     yum install  jenkins-2.190.2-1.1.noarch
+![Output](https://github.com/farrukh90/infrastructure/blob/master/jenkins/images/JenkinsVersionError.png)
