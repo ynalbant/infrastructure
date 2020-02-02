@@ -59,7 +59,7 @@ resource "aws_instance" "jenkins_master" {
 	"sudo systemctl enable docker", 
 	"sudo systemctl start docker",
         "sudo usermod -aG docker  -s /bin/bash jenkins", 
-	"sudo cp -r /etc/skel/.*	/var/lib/jenkins",
+	"sudo cp -r /etc/skel/.*	/var/lib/jenkins/",
         "sudo usermod -aG docker jenkins", 
 	"sudo chmod 777 /var/run/docker.sock",	
 
