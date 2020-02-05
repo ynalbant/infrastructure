@@ -1,5 +1,5 @@
 node {
     stage("Clone Repo"){
-        git  'https://github.com/farrukh90/infrastructure.git'
+        git  url: 'https://github.com/farrukh90/infrastructure.git'
     }
 }
