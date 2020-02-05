@@ -6,6 +6,6 @@ node {
         readFile 'userlist'
         env.WORKSPACE = pwd()
         def file = readFile "${env.WORKSPACE}/userlist"    
-        file.split("\n")[n]
+        file.split("\n")
     }
 }
