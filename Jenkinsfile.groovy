@@ -1,7 +1,7 @@
 node {
     properties([pipelineTriggers([cron('* * * * *')])])
     stage("Pull Repo"){
-        echo "Hello World"
+        git 'https://github.com/farrukh90/packer.git'    
     }
     stage("Deploy to Dev"){
         echo "Hello World"
