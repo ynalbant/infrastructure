@@ -1,5 +1,9 @@
 node {
-    //properties([pipelineTriggers([cron('* * * * *')])])
+    properties([
+        buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')), 
+        pipelineTriggers([cron('* * * * *')])
+        ])
+
     stage("Pull Repo"){
         //This line pulls a repo
         git 'https://github.com/farrukh90/packer.git'    
@@ -49,4 +53,4 @@ node {
     stage("Clean WS"){
         cleanWs()
     }
-}
+}    
