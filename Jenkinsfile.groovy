@@ -1,6 +1,7 @@
 node {
     properties([pipelineTriggers([cron('* * * * *')])])
     stage("Pull Repo"){
+        //This line pulls a repo
         git 'https://github.com/farrukh90/packer.git'    
     }
     stage("Deploy to Dev"){
@@ -24,7 +25,11 @@ node {
 			fi
 		'''
 	}
-
+    stage("Timestamp"){
+		timestamps {
+			echo "hello"
+		}
+	}
     stage("Send Notification to slack"){
         echo "Hello World"
         slackSend channel: 'nagios_alerts', message: 'Completed'
