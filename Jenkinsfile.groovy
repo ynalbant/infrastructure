@@ -1,12 +1,15 @@
 node {
     properties([pipelineTriggers([cron('* * * * *')])])
-    stage("Stage1"){
+    stage("Pull Repo"){
         echo "Hello World"
     }
-    stage("Stage2"){
+    stage("Deploy to Dev"){
         echo "Hello World"
     }
-    stage("Stage3"){
+    stage("Wait"){
+        input 'Deploy to QA? '
+    }
+    stage("Deploy to QA"){
         echo "Hello World"
     }
     stage("Send Notification to slack"){
