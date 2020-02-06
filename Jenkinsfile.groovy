@@ -8,7 +8,7 @@ node {
     }
     stage("Wait"){
         //input 'Deploy to QA? '
-        sleep 3
+        //sleep 3
     }
     stage("Deploy to QA"){
         echo "Hello World"
