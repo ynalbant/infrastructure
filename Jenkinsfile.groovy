@@ -7,7 +7,7 @@ node {
         echo "Hello World"
     }
     stage("Wait"){
-        input 'Deploy to QA? '
+        //input 'Deploy to QA? '
     }
     stage("Deploy to QA"){
         echo "Hello World"
