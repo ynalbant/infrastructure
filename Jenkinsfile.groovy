@@ -13,6 +13,18 @@ node {
     stage("Deploy to QA"){
         echo "Hello World"
     }
+    stage("Script"){
+		sh label: '', script: 
+		'''#!/bin/bash
+			if [ ! -f /tmp/foo.txt ]; 
+			then
+				echo "File not found!"
+				echo "Creating a file"
+				touch "/tmp/foo.txt"
+			fi
+		'''
+	}
+
     stage("Send Notification to slack"){
         echo "Hello World"
         slackSend channel: 'nagios_alerts', message: 'Completed'
