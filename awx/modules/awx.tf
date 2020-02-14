@@ -7,7 +7,7 @@ resource "aws_instance" "awx" {
   security_groups             = ["allow_ssh_and_awx"]
 
   provisioner "file" {
-    source      = "awx"
+    source      = "./modules/awx"
     destination = "/tmp/"
 
     connection {
