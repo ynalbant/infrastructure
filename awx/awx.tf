@@ -1,6 +1,5 @@
 module "awx" {
   source            = "./modules"
-  ami               = "${var.ami}"
   user              = "${var.user}"
   domain            = "${var.domain}"
   region            = "${var.region}"

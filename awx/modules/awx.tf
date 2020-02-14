@@ -1,8 +1,23 @@
+data "aws_ami" "centos" {
+  most_recent = true
+  owners      = ["679593333241"]
+
+  filter {
+    name   = "state"
+    values = ["available"]
+  }
+
+  filter {
+    name   = "name"
+    values = ["CentOS Linux 7 x86_64 HVM EBS *"]
+  }
+}
+
 
 resource "aws_instance" "awx" {
   instance_type               = "${var.instance_type}"
-  ami                         = "${var.ami}"
   key_name                    = "${var.key_name}"
+  ami                         = "${data.aws_ami.centos.id}"
   associate_public_ip_address = "true"
   security_groups             = ["allow_ssh_and_awx"]
 
