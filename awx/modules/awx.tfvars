@@ -1,9 +1,0 @@
-instance_type		=	"t2.medium"
-key_name		=	"ansible"
-ami			=	"ami-0ff760d16d9497662"    #Use Centos7  image
-vpc_id			=	"vpc-908caaf6"
-user			=	"centos"
-ssh_key_location	=	"~/.ssh/id_rsa"                                                   
-zone_id			=	"Z32OHGRMBVZ9LR"	   #Add hosted DNS zone ID here
-domain			=	"acirrustech.com"
-region = "eu-west-1"
