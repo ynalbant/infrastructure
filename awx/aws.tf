@@ -1,0 +1,3 @@
+module "awx" {
+  source = "./modules"
+}
