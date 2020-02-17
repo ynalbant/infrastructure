@@ -1,6 +1,6 @@
 variable "instance_type" {}
 variable "key_name" {}
-variable "virginia_vpc_id" {}
+variable "region1_vpc_id" {}
 variable "user" {}
 variable "ssh_key_location" {}
 variable "zone_id" {}

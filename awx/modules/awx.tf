@@ -1,5 +1,7 @@
-data "aws_ami" "centos-virginia" {
-  provider	=	"aws.virginia"
+
+
+data "aws_ami" "centos-region1" {
+  provider    = "aws.region1"
   most_recent = true
   owners      = ["679593333241"]
 
@@ -16,10 +18,10 @@ data "aws_ami" "centos-virginia" {
 
 
 resource "aws_instance" "awx" {
-  provider		      =	"aws.virginia"
+  provider		      =	"aws.region1"
   instance_type               = "${var.instance_type}"
   key_name                    = "${var.key_name}"
-  ami                         = "${data.aws_ami.centos-virginia.id}"
+  ami                         = "${data.aws_ami.centos-region1.id}"
   associate_public_ip_address = "true"
   security_groups             = ["allow_ssh_and_awx"]
 
@@ -63,10 +65,10 @@ resource "aws_instance" "awx" {
 
 
 resource "aws_security_group" "allow_ssh_and_awx" {
-  provider	=	"aws.virginia"
+  provider	=	"aws.region1"
   name        = "allow_ssh_and_awx"
   description = "Allow SSH and awx"
-  vpc_id      = "${var.virginia_vpc_id}"
+  vpc_id      = "${var.region1_vpc_id}"
 
   ingress {
     from_port   = 22
@@ -91,9 +93,9 @@ resource "aws_security_group" "allow_ssh_and_awx" {
 
 
 
-# Creates key for virginia
+# Creates key for region1  
 resource "aws_key_pair" "ansible" {
-  provider	=	"aws.virginia"
+  provider	=	"aws.region1"
   key_name   = "ansible"
   public_key = "${file("~/.ssh/id_rsa.pub")}"
 }

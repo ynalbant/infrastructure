@@ -1,8 +1,8 @@
 resource "aws_instance" "worker1" {
-  provider		      = "aws.virginia"   
+  provider		      = "aws.region1"   
   instance_type               = "${var.instance_type}"
   key_name                    = "${var.key_name}"
-  ami                         = "${data.aws_ami.centos-virginia.id}"
+  ami                         = "${data.aws_ami.centos-region1.id}"
   associate_public_ip_address = "true"
   security_groups             = ["allow_ssh_and_awx"]
   
