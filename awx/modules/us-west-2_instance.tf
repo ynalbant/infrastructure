@@ -1,5 +1,5 @@
-data "aws_ami" "centos-virginia" {
-  provider	=	"aws.virginia"
+data "aws_ami" "centos-oregon" {
+  provider		      = "aws.oregon"
   most_recent = true
   owners      = ["679593333241"]
 
@@ -15,16 +15,15 @@ data "aws_ami" "centos-virginia" {
 }
 
 
-resource "aws_instance" "awx" {
-  provider		      =	"aws.virginia"
+resource "aws_instance" "worker2" {
+  provider		      = "aws.oregon"
   instance_type               = "${var.instance_type}"
-  key_name                    = "${var.key_name}"
-  ami                         = "${data.aws_ami.centos-virginia.id}"
+  ami                         = "${data.aws_ami.centos-oregon.id}"
   associate_public_ip_address = "true"
+  key_name                    = "${var.key_name}"
   security_groups             = ["allow_ssh_and_awx"]
-
   provisioner "file" {
-    source      = "./modules/awx"
+    source      = "/root/.ssh"
     destination = "/tmp/"
 
     connection {
@@ -34,6 +33,20 @@ resource "aws_instance" "awx" {
       private_key = "${file(var.ssh_key_location)}"
     }
   }
+
+
+  provisioner "file" {
+    source      = "./modules/ansible"
+    destination = "/tmp/ansible"
+
+    connection {
+      host        = "${self.public_ip}"
+      type        = "ssh"
+      user        = "${var.user}"
+      private_key = "${file(var.ssh_key_location)}"
+    }
+  }
+
 
   provisioner "remote-exec" {
     connection {
@@ -52,21 +65,29 @@ resource "aws_instance" "awx" {
       "sudo systemctl enable docker",
       "sudo pip uninstall docker docker-py docker-compose",
       "sudo pip install docker-compose==1.9",
-      "sudo ansible-playbook -i /tmp/awx/installer/inventory /tmp/awx/installer/install.yml -vv",
+      "sudo useradd -G wheel,docker ansible",
+
+
+      "# These commands below used for disabling host key verification",
+      "sudo cp -f /tmp/.ssh/id_rsa.pub /tmp/.ssh/authorized_keys  &> /dev/null",
+      "sudo cp -r /tmp/.ssh /home/ansible/ &> /dev/null",
+      "sudo chmod 600 /home/ansible/.ssh/authorized_keys",
+      "sudo chown -R ansible:ansible /home/ansible/",
+      "sudo chmod 0600 /home/ansible/.ssh/id_rsa",
+      "sudo cp /tmp/ansible /etc/sudoers.d/",
+      "sudo chmod 440 /etc/sudoers.d/ansible",
+
     ]
   }
-  tags = {
-    Name = "Tower"
-  }  
 }
 
 
 
-resource "aws_security_group" "allow_ssh_and_awx" {
-  provider	=	"aws.virginia"
+resource "aws_security_group" "allow_ssh_and_awx_oregon" {
+  provider	=	"aws.oregon"
   name        = "allow_ssh_and_awx"
   description = "Allow SSH and awx"
-  vpc_id      = "${var.virginia_vpc_id}"
+  vpc_id      = "${var.oregon_vpc_id}"
 
   ingress {
     from_port   = 22
@@ -89,11 +110,9 @@ resource "aws_security_group" "allow_ssh_and_awx" {
   }
 }
 
-
-
-# Creates key for virginia
-resource "aws_key_pair" "ansible" {
-  provider	=	"aws.virginia"
+# Creates key for oregon   
+resource "aws_key_pair" "oregon" {
+  provider	=	"aws.oregon"
   key_name   = "ansible"
   public_key = "${file("~/.ssh/id_rsa.pub")}"
 }

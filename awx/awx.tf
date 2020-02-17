@@ -2,8 +2,13 @@ module "awx" {
   source            = "./modules"
   user              = "${var.user}"
   domain            = "${var.domain}"
-  region            = "${var.region}"
-  vpc_id            = "${var.vpc_id}"
+  providers = {
+    aws1 = "aws.virginia"
+    aws2 = "aws.oregon"
+  }
+  region	    = "${var.region}"
+  virginia_vpc_id   = "${var.virginia_vpc_id}"
+  oregon_vpc_id     = "${var.oregon_vpc_id}"
   zone_id           = "${var.zone_id}"
   key_name          = "${var.key_name}"
   instance_type     = "${var.instance_type}"

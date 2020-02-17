@@ -1,7 +1,8 @@
-resource "aws_instance" "workers" {
+resource "aws_instance" "worker1" {
+  provider		      = "aws.virginia"   
   instance_type               = "${var.instance_type}"
   key_name                    = "${var.key_name}"
-  ami                         = "${data.aws_ami.centos.id}"
+  ami                         = "${data.aws_ami.centos-virginia.id}"
   associate_public_ip_address = "true"
   security_groups             = ["allow_ssh_and_awx"]
   
@@ -17,6 +18,20 @@ resource "aws_instance" "workers" {
       private_key = "${file(var.ssh_key_location)}"
     }
   }
+  
+
+  provisioner "file" {
+    source      = "./modules/ansible"
+    destination = "/tmp/ansible"
+
+    connection {
+      host        = "${self.public_ip}"
+      type        = "ssh"
+      user        = "${var.user}"
+      private_key = "${file(var.ssh_key_location)}"
+    }
+  }
+
 
   provisioner "remote-exec" {
     connection {
@@ -39,12 +54,16 @@ resource "aws_instance" "workers" {
  
 
       "# These commands below used for disabling host key verification",
-      "sudo mv /tmp/.ssh /home/ansible/ &> /dev/null",
-      "sudo cp /tmp/.ssh/id_rsa.pub /home/ansible/.ssh/authorized_keys  &> /dev/null",
+      "sudo cp -f /tmp/.ssh/id_rsa.pub /tmp/.ssh/authorized_keys  &> /dev/null",
+      "sudo cp -r /tmp/.ssh /home/ansible/ &> /dev/null",
       "sudo chmod 600 /home/ansible/.ssh/authorized_keys",
       "sudo chown -R ansible:ansible /home/ansible/",
       "sudo chmod 0600 /home/ansible/.ssh/id_rsa",       
+      "sudo cp /tmp/ansible /etc/sudoers.d/", 
+      "sudo chmod 440 /etc/sudoers.d/ansible",
      
     ]
   }
 }
+## Uses the same sec group as the tower
+## Uses the same key as master

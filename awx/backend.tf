@@ -1,7 +1,7 @@
 terraform {
 backend "s3" {
 bucket = "acirrustech-iaac"
-key = "jenkins/us-east-1/tools/tools/jenkins.tfstate"
+key = "tower/us-east-1/tools/tools/tower.tfstate"
 region = "us-east-1"
   }
 }
