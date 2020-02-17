@@ -4,6 +4,5 @@ variable "user" {}
 variable "ssh_key_location" {}
 variable "zone_id" {}
 variable "domain" {}
-variable "region" {}
 variable "oregon_vpc_id" {}
 variable "virginia_vpc_id" {}

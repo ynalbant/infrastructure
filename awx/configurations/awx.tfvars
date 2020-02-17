@@ -11,7 +11,7 @@ oregon_vpc_id		    	=	"vpc-67dd1f1f"
 zone_id			        =	"Z32OHGRMBVZ9LR" 
 domain			        =	"acirrustech.com"
 base_domain			=	"acirrustech.com"
-region 			        = 	"us-east-1"
+region1 			= 	"us-east-1"
 
 
 

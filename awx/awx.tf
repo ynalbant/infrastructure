@@ -6,7 +6,6 @@ module "awx" {
     aws1 = "aws.virginia"
     aws2 = "aws.oregon"
   }
-  region	    = "${var.region}"
   virginia_vpc_id   = "${var.virginia_vpc_id}"
   oregon_vpc_id     = "${var.oregon_vpc_id}"
   zone_id           = "${var.zone_id}"
