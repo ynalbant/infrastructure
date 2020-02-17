@@ -6,12 +6,21 @@ s3_folder_region                =	"us-east-1"
 region1_vpc_id		    	=	"vpc-1471ad6e"
 
 # Change to second region to work, in my case oregon
-oregon_vpc_id		    	=	"vpc-67dd1f1f"
+region2_vpc_id		    	=	"vpc-67dd1f1f"
+
+# Change to second region to work, in my case oregon
+region3_vpc_id		    	=	"vpc-908caaf6"
 
 zone_id			        =	"Z32OHGRMBVZ9LR" 
 domain			        =	"acirrustech.com"
 base_domain			=	"acirrustech.com"
 region1 			= 	"us-east-1"
+region2 			= 	"us-west-2"
+region3 			= 	"eu-west-1"
+
+
+
+
 
 
 
@@ -24,5 +33,3 @@ instance_type		        =   	"t2.medium"
 user		    	        =	"centos"
 key_name			=	"ansible"
 ssh_key_location		=	"~/.ssh/id_rsa"
-oregon				=	"us-west-2"
-virginia			=	"us-east-1"

@@ -1,11 +1,12 @@
 variable "instance_type" {}
 variable "key_name" {}
-variable "region1_vpc_id" {}
 variable "user" {}
 variable "ssh_key_location" {}
 variable "zone_id" {}
 variable "domain" {}
 variable "region1" {}
-variable "virginia" {}
-variable "oregon" {}
-variable "oregon_vpc_id" {}
+variable "region2" {}
+variable "region3" {}
+variable "region1_vpc_id" {}
+variable "region2_vpc_id" {}
+variable "region3_vpc_id" {}

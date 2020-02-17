@@ -1,5 +1,5 @@
-data "aws_ami" "centos-oregon" {
-  provider		      = "aws.oregon"
+data "aws_ami" "centos-region3" {
+  provider		      = "aws.region3"
   most_recent = true
   owners      = ["679593333241"]
 
@@ -15,10 +15,10 @@ data "aws_ami" "centos-oregon" {
 }
 
 
-resource "aws_instance" "worker2" {
-  provider		      = "aws.oregon"
+resource "aws_instance" "worker3" {
+  provider		      = "aws.region3"
   instance_type               = "${var.instance_type}"
-  ami                         = "${data.aws_ami.centos-oregon.id}"
+  ami                         = "${data.aws_ami.centos-region3.id}"
   associate_public_ip_address = "true"
   key_name                    = "${var.key_name}"
   security_groups             = ["allow_ssh_and_awx"]
@@ -83,11 +83,11 @@ resource "aws_instance" "worker2" {
 
 
 
-resource "aws_security_group" "allow_ssh_and_awx_oregon" {
-  provider	=	"aws.oregon"
+resource "aws_security_group" "allow_ssh_and_awx_region3" {
+  provider	=	"aws.region3"
   name        = "allow_ssh_and_awx"
   description = "Allow SSH and awx"
-  vpc_id      = "${var.oregon_vpc_id}"
+  vpc_id      = "${var.region3_vpc_id}"
 
   ingress {
     from_port   = 22
@@ -110,9 +110,9 @@ resource "aws_security_group" "allow_ssh_and_awx_oregon" {
   }
 }
 
-# Creates key for oregon   
-resource "aws_key_pair" "oregon" {
-  provider	=	"aws.oregon"
+# Creates key for region3   
+resource "aws_key_pair" "region3" {
+  provider	=	"aws.region3"
   key_name   = "ansible"
   public_key = "${file("~/.ssh/id_rsa.pub")}"
 }
