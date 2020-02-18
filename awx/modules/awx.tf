@@ -24,6 +24,7 @@ resource "aws_instance" "awx" {
   ami                         = "${data.aws_ami.centos-region1.id}"
   associate_public_ip_address = "true"
   security_groups             = ["allow_ssh_and_awx"]
+  iam_instance_profile = "${aws_iam_instance_profile.tower_profile.name}"
 
   provisioner "file" {
     source      = "./modules/awx"
