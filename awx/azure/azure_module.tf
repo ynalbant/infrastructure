@@ -2,7 +2,6 @@ module "azure"{
    source = "module"
    os_version = "${var.os_version}"         
    offer  = "${var.offer}"
-   storage_account = "${var.storage_account}"
    vm2_computername = "${var.vm2_computername}"
    vm_size = "${var.vm_size}"
    sku  = "${var.sku}"

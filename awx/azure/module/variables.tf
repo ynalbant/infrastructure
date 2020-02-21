@@ -16,6 +16,5 @@ variable "publisher" {}
 variable "sku" {}
 variable "offer" {}
 variable "admin_username" {}
-variable "storage_account" {}
 variable "ssh_pub_key" {}
 variable "os_version" {}
