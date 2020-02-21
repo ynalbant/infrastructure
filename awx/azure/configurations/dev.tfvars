@@ -17,7 +17,6 @@ sku                     =   "7.5"
 os_version              =   "latest"
 admin_username          =   "centos"
 vm_size                 =   "Standard_DS1_v2"
-storage_account         =   "dev1storageaccount1"
 
 
 
