@@ -14,7 +14,7 @@ s3_folder_region                =       "us-east-1"
 
 # Please do not change below
 s3_folder_type                  =       "tools"
-user                            =       "centos"
+user                            =       "ansible" 
 key_name                        =       "ansible"
 ssh_key_location                =       "~/.ssh/id_rsa"
 ssh_pub_key			=	"~/.ssh/id_rsa.pub"
