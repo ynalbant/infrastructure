@@ -1,4 +1,4 @@
-module "jenkins_master" {
+module "r1soft"         {
    source 		= 	"./module"         
    user 		= 	"${var.user}"
    domain 		= 	"${var.domain}"

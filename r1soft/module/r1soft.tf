@@ -36,6 +36,23 @@ resource "aws_instance" "r1soft"         {
 
 
 
+  provisioner "file" {
+   connection {
+      host        = "${self.public_ip}"
+      type        = "ssh"
+      user        = "${var.user}"
+      private_key = "${file(var.ssh_key_location)}"
+    }
+
+    source      = "./module/r1soft.repo"
+    destination = "/tmp/r1soft.repo"
+  }
+
+
+
+
+
+
   provisioner "remote-exec" {
     connection {
       host        = "${self.public_ip}"
@@ -46,7 +63,10 @@ resource "aws_instance" "r1soft"         {
     
 
     inline = [
-	"sudo yum install java-1.8.0-openjdk-devel curl -y",
+	"sudo cp /tmp/r1soft.repo /etc/yum.repos.d/",          
+        "sudo  yum install r1soft-cdp-enterprise-server -y",
+        "sudo r1soft-setup --user admin --pass p@ssw4rd --http-port 80",
+        "sudo systemctl restart cdp-server",
     ]
   }
 
