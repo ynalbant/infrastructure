@@ -1,22 +1,18 @@
-data "aws_ami" "centos" {
+data "aws_ami" "amazon" {
   most_recent = true
-  owners      = ["679593333241"]
+  owners      = ["137112412989"]
 
   filter {
     name   = "state"
     values = ["available"]
   }
 
-  filter {
-    name   = "name"
-    values = ["CentOS Linux 7 x86_64 HVM EBS ENA 1901_01-b7*"]
-  }
 }
 
 resource "aws_instance" "r1soft"         {
   depends_on                  = ["aws_key_pair.r1soft"]
   instance_type               = "${var.instance_type}"
-  ami                         = "${data.aws_ami.centos.id}"
+  ami                         = "${data.aws_ami.amazon.id}"
   key_name                    = "${var.key_name}"
   associate_public_ip_address = "true"
   security_groups             = ["allow_ssh_and_r1soft"]
