@@ -12,17 +12,6 @@ vi configurations/r1soft.tfvars
 ```
 
 
-```
-vi configurations/r1soft.tfvars
-
-s3_bucket                       =   "YOUR_BUCKET"         
-s3_folder_region                =   "YOUR_BUCKET_REGION"               
-vpc_id                          =   "YOUR_VPC_ID"            
-zone_id                         =   "YOUR_Z32OHGRMBVZ9LR"       
-domain                          =   "YOUR_DOMAIN"
-region                          =   "YOUR_REGION"
-```
-
 
 
 
