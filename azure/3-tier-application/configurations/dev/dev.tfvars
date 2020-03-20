@@ -9,7 +9,7 @@ vm3_computername         = "vm3"
 address_space            = "10.0.0.0/16"
 vnet_name                = "vnet1"
 location                 = "eastus"
-ssh_key                  = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9MFKha71R9iz5ROEBBs6PnFAv/f5NZcscnePhXeCmPLlO8zwqCH3W1cpU6IcbWSbK96m/PccypQ3+yZrv8NBeWAfTS/2LiF4aCAer0TLrRF0pGbZ+oUPAxOL8ck1M99gMX7BhhfQttiL/Q10nXjiiHfHE/QIIFwWaalxV0Ppi0jjbneN8QCDbYH+bGz2jB6rTSPYHOl3jwiZD/Rqe/4huECxpI/bDi1m4nZM31LlBQoSne+1olQwmKhH69ILH/irzqHkkVLveHVEfSNB+PoevOCxjIPh1qIuiQ42csTHuby5tnu3Y3m+6PIFlvGxshHmNmdRc0zKEDM916ViFhYpn centos@ip-172-31-26-152.eu-west-2.compute.internal"
+ssh_key                  = ""
 environment              = "dev"
 storage_account          = "dev1farrukh"
 
