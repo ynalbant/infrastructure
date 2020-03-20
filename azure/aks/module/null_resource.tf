@@ -1,6 +1,6 @@
 resource "null_resource" "authenticate" {
     depends_on  =   [
-        azurerm_kubernetes_cluster.example
+        azurerm_kubernetes_cluster.example,
         azurerm_resource_group.example
     ]
     provisioner "local-exec" {
