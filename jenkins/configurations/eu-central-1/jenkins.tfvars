@@ -10,7 +10,7 @@ region 			                = 	"us-east-1"
 
 # Please do not change below
 environment                     =   	"tools"
-s3_folder_project               =   	"jenkins"
+s3_folder_project               =   	"jenkins2"
 s3_folder_type                  =   	"tools"
 s3_tfstate_file                 =   	"jenkins.tfstate"
 instance_type		            =   	"t2.medium"

@@ -11,7 +11,7 @@ resource "null_resource" "jenkins_passwd" {
       private_key = "${file(var.ssh_key_location)}"
     }
 
-   source = "/root/.ssh"
+   source = "~/.ssh"
    destination = "/tmp/"
  }
  provisioner "file" {
