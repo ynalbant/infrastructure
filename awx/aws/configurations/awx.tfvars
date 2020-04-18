@@ -6,17 +6,17 @@ s3_folder_region                =       "us-east-1"
 region1_vpc_id                  =       "vpc-e8a53590"
 
 # Change to second region to work, in my case california
-#region2_vpc_id                  =       "vpc-6df4ef0a"
+region2_vpc_id                  =       "vpc-6df4ef0a"
 
 # Change to second region to work, in my case ohio
-#region3_vpc_id                  =       "vpc-02a90885485767692"
+region3_vpc_id                  =       "vpc-02a90885485767692"
 
 zone_id                         =       "Z1LR4CI8PDFACN"
 domain                          =       "ayyildizrug.com"
 base_domain                     =       "ayyildizrug.com"
 region1                         =       "us-west-2"
-#region2                         =       "us-west-1"
-#region3                         =       "us-east-2"
+region2                         =       "us-west-1"
+region3                         =       "us-east-2"
 
 
 
