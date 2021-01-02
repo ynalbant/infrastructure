@@ -7,7 +7,7 @@
 ### Steps
 
 ```
-git clone https://github.com/farrukh90/infrastructure.git
+git clone https://github.com/ynalbant/infrastructure.git
 cd infrastructure/jenkins/
 ls configurations
 ```
